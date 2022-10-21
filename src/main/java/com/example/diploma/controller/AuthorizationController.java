@@ -18,12 +18,12 @@ public class AuthorizationController {
 
     @PostMapping("/login")
     public AuthorizationResponse logIn(@RequestBody AuthorizationRequest request) {
-        return service.logIn(request);
+        return service.login(request);
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<?> logOut(@RequestHeader ("token") String token) {
-        service.logOut(token);
+    public ResponseEntity<?> logOut(@RequestHeader ("auth-token") String token) {
+        service.logout(token);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

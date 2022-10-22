@@ -4,6 +4,7 @@ import com.example.diploma.entity.File;
 import com.example.diploma.entity.User;
 import com.example.diploma.exceptions.DataException;
 import com.example.diploma.exceptions.UnauthorizedUserException;
+import com.example.diploma.model.FileNameResponse;
 import com.example.diploma.repository.AuthorizationRepository;
 import com.example.diploma.repository.FileRepository;
 import com.example.diploma.repository.UserRepository;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,7 +61,6 @@ public class FileService {
             log.error("Download file error");
             throw new DataException("Data exception");
         }
-        //log.info("User {} download file {}", user.getLogin(), filename);
         return file;
     }
 
@@ -77,15 +78,14 @@ public class FileService {
         }
     }
 
-    public List<FileResponse> getAllFiles(String authToken, Integer limit) {
+    public List<FileNameResponse> getAllFiles(String authToken, Integer limit) {
         final User user = getUser(authToken);
         if (user == null) {
-            //log.error("Get all files error");
+            log.error("Get all files error");
             throw new UnauthorizedUserException("Unauthorized user");
         }
-        //log.info("User {} get all files", user.getLogin());
         return fileRepository.findAllByUser(user, Sort.by("filename")).stream()
-                .map(f -> new FileResponse(f.getFilename(), f.getSize()))
+                .map(f -> new FileNameResponse(f.getFileName(), f.getSize()))
                 .collect(Collectors.toList());
     }
 

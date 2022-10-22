@@ -11,25 +11,22 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User myUser = userRepository.findByLogin(username)
-                .orElseThrow(() -> new UnauthorizedUserException("Unauthorized error"));
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        return User.builder()
-                .username(myUser.getLogin())
+                .orElseThrow(() -> new UnauthorizedUserException("Unauthorized user"));
+        //List<GrantedAuthority> authorities = new ArrayList<>();
+        return (UserDetails) User.builder()
+                .login(myUser.getLogin())
                 .password(myUser.getPassword())
-                .authorities(authorities)
                 .build();
     }
 }

@@ -26,5 +26,4 @@ public class User {
 
     @OneToMany (cascade = CascadeType.ALL)
     private List<File> files;
-
 }

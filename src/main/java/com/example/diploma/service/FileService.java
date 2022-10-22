@@ -46,7 +46,7 @@ public class FileService {
             throw new UnauthorizedUserException("Unauthorized user");
         }
         log.info("User {} delete file {}", user.getLogin(), filename);
-        fileRepository.removeByUserAndFilename(user, filename);
+        fileRepository.removeByUserAndFileName(user, filename);
     }
 
     public File downloadFile(String authToken, String filename) {
@@ -54,7 +54,7 @@ public class FileService {
         if (user == null) {
             throw new UnauthorizedUserException("Unauthorized user");
         }
-        final File file = fileRepository.findByUserAndFilename(user, filename);
+        final File file = fileRepository.findByUserAndFileName(user, filename);
         if (file == null) {
             log.error("Download file error");
             throw new DataException("Data exception");

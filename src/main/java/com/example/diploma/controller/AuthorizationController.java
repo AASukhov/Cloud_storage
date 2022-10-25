@@ -30,5 +30,4 @@ public class AuthorizationController {
         service.logout(authToken);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-
 }

@@ -32,10 +32,10 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userService).passwordEncoder(encoder());
-//    }
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService).passwordEncoder(encoder());
+    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
@@ -49,7 +49,7 @@ public class SecurityConfiguration {
                 .headers().frameOptions().disable()
 
                 .and()
-                .authorizeRequests().antMatchers("/h2-console/**", "/login")
+                .authorizeRequests().antMatchers("/login")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

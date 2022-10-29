@@ -34,8 +34,8 @@ class FileServiceTest {
     @Mock
     private UserRepository userRepository;
 
-    public static final String LOGIN_1 = "login1";
-    public static final String PASSWORD_1 = "pass1";
+    public static final String LOGIN_1 = "login";
+    public static final String PASSWORD_1 = "pass";
     public static final User USER_1 = new User (LOGIN_1, PASSWORD_1, null);
     public static final String TOKEN = "token";
     public static final String FILENAME_1 = "fileName1";
@@ -58,5 +58,4 @@ class FileServiceTest {
         fileService.editFileName(TOKEN, FILENAME_1, FILENAME_2);
         Mockito.verify(fileRepository, Mockito.times(1)).editFileNameByUser(USER_1, FILENAME_1, FILENAME_2);
     }
-
 }

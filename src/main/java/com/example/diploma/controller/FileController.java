@@ -4,6 +4,7 @@ import com.example.diploma.entity.File;
 import com.example.diploma.model.FileNameResponse;
 import com.example.diploma.service.FileService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +18,7 @@ import java.util.Map;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/file")
+@CrossOrigin(origins = "http://localhost:8080")
 public class FileController {
 
     private FileService service;

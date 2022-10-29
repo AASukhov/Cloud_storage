@@ -7,17 +7,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class AuthorizationRepository {
-    private final Map<String, String> tokenAndUserName = new ConcurrentHashMap<>();
+    private final Map<String, String> tokenAndUserNames = new ConcurrentHashMap<>();
+
     public void putTokenAndUsername(String token, String username) {
-        tokenAndUserName.put(token, username);
+        tokenAndUserNames.put(token, username);
     }
 
     public String getUserNameByToken(String token) {
-        return tokenAndUserName.get(token);
+        return tokenAndUserNames.get(token);
     }
 
     public void removeTokenAndUsernameByToken(String token) {
-        tokenAndUserName.remove(token);
+        tokenAndUserNames.remove(token);
     }
 }
 

@@ -29,8 +29,8 @@ class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
-    public static final String LOGIN_1 = "login1";
-    public static final String PASSWORD_1 = "pass1";
+    public static final String LOGIN_1 = "login";
+    public static final String PASSWORD_1 = "pass";
     public static final User USER_1 = new User(LOGIN_1, PASSWORD_1, null);
     public static final UserDetails USER_DETAILS_1 = org.springframework.security.core.userdetails.User.builder()
             .username(LOGIN_1)

@@ -4,6 +4,7 @@ import com.example.diploma.configurations.TokenProvider;
 import com.example.diploma.model.AuthorizationRequest;
 import com.example.diploma.model.AuthorizationResponse;
 import com.example.diploma.repository.AuthorizationRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,9 +13,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-@Service
 @Slf4j
+@Service
+@AllArgsConstructor
 public class AuthorizationService {
+
     private AuthorizationRepository authorizationRepository;
     private AuthenticationManager authenticationManager;
     private TokenProvider tokenProvider;
@@ -40,6 +43,5 @@ public class AuthorizationService {
         final String username = authorizationRepository.getUserNameByToken(authToken);
         log.info("User {} logout", username);
         authorizationRepository.removeTokenAndUsernameByToken(authToken);
-
     }
 }

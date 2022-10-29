@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class AuthorizationRequest implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 11135L;
+    private static final long serialVersionUID = 1224459413817217L;
 
     private String login;
     private String password;

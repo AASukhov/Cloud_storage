@@ -28,9 +28,9 @@ class DiplomaApplicationTest {
     @Autowired
     MockMvc mockMvc;
 
-    private static final String WRONG_LOGIN = "user1";
-    private static final String LOGIN = "pochta1@mail.ru";
-    private static final String PASSWORD = "pass1";
+    private static final String WRONG_LOGIN = "wrongUser";
+    private static final String LOGIN = "admin@gmail.ru";
+    private static final String PASSWORD = "0000";
     private static final String ENDPOINT_LOGIN = "/login";
     private static final String ENDPOINT_LOGOUT = "/logout";
     private static AuthorizationRequest validRequest;

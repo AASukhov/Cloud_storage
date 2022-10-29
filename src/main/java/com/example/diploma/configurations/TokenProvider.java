@@ -18,7 +18,7 @@ import java.util.function.Function;
 public class TokenProvider implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 1000L;
+    private static final long serialVersionUID = -533456356709257L;
 
     @Value("${jwt.expiration}")
     private long expiration;

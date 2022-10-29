@@ -1,5 +1,6 @@
 package com.example.diploma.configurations;
 
+import com.example.diploma.exceptions.UnauthorizedUserException;
 import com.example.diploma.service.UserService;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.AllArgsConstructor;
@@ -36,9 +37,11 @@ public class JwtFilter extends OncePerRequestFilter {
             try {
                 username = tokenProvider.getUsernameFromToken(authToken);
             } catch (IllegalArgumentException e) {
-                log.error("a problem with getting username from token", e);
+                log.error("an error with getting username from token", e);
             } catch (ExpiredJwtException e) {
                 log.warn("the token is expired", e);
+            } catch(UnauthorizedUserException e){
+                log.error("Authentication failed");
             }
         } else {
             log.warn("couldn't find bearer string, will ignore the header");

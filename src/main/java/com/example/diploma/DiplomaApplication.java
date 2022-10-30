@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan({"com.example.diploma.repository"})
+@ComponentScan({"com.example.diploma.controller"})
 public class DiplomaApplication {
 
     public static void main(String[] args) {
